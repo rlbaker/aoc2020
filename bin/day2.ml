@@ -22,8 +22,6 @@ let read_input =
   let f acc line = record_of_string line :: acc in
   In_channel.fold_lines In_channel.stdin ~init:[] ~f
 
-let day2 f input = List.length (List.filter ~f input)
-
 let is_valid1 r =
   let f ch = Char.(ch = r.ch) in
   let count = String.count ~f r.pw in
@@ -34,8 +32,10 @@ let is_valid2 r =
   let match2 = Char.(r.ch = r.pw.[r.max - 1]) in
   Bool.(match1 <> match2)
 
+let day2 ~f input = List.filter ~f input |> List.length
+
 let () =
   let input = read_input in
   let output = printf "%d\n" in
-  day2 is_valid1 input |> output;
-  day2 is_valid2 input |> output
+  day2 ~f:is_valid1 input |> output;
+  day2 ~f:is_valid2 input |> output
