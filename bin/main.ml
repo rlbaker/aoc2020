@@ -1,10 +1,6 @@
 open Base
 open Stdio
 
-let to_int acc line = Int.of_string line :: acc
-
-let read_input = In_channel.fold_lines ~init:[] ~f:to_int In_channel.stdin
-
 let day1_1 input =
   let sum_2020 x y = Option.some_if (x + y = 2020) (x * y) in
   let f a = List.find_map input ~f:(sum_2020 a) in
@@ -12,9 +8,13 @@ let day1_1 input =
 
 let day1_2 input =
   let sum_2020 x y z = Option.some_if (x + y + z = 2020) (x * y * z) in
-  let f1 a b = List.find_map input ~f:(sum_2020 a b) in
-  let f a = List.find_map input ~f:(f1 a) in
+  let g a b = List.find_map input ~f:(sum_2020 a b) in
+  let f a = List.find_map input ~f:(g a) in
   List.find_map input ~f
+
+let read_input =
+  let to_int acc line = Int.of_string line :: acc in
+  In_channel.fold_lines In_channel.stdin ~init:[] ~f:to_int
 
 let print_result = function
   | Some v -> printf "%d\n" v
@@ -22,5 +22,5 @@ let print_result = function
 
 let () =
   let input = read_input in
-  print_result (day1_1 input);
-  print_result (day1_2 input)
+  day1_1 input |> print_result;
+  day1_2 input |> print_result
