@@ -18,9 +18,9 @@ let read_input =
 
 let () =
   let input = read_input in
-  let print_result = function
+  let output = function
     | Some v -> printf "%d\n" v
     | _ -> ()
   in
-  print_result (day1_1 input);
-  print_result (day1_2 input)
+  day1_1 input |> output;
+  day1_2 input |> output
