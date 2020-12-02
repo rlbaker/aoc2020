@@ -8,14 +8,14 @@ type record =
   ; pw : string
   }
 
-let re = Re.Posix.compile_pat "([0-9]+)-([0-9]+) ([a-z]): ([a-z]+)"
-
 let record_of_string line =
+  let re = Re.Posix.compile_pat "([0-9]+)-([0-9]+) ([a-z]): ([a-z]+)" in
   let matches = Re.exec re line in
-  { min = Int.of_string (Re.Group.get matches 1)
-  ; max = Int.of_string (Re.Group.get matches 2)
-  ; ch = Char.of_string (Re.Group.get matches 3)
-  ; pw = Re.Group.get matches 4
+  let group = Re.Group.get matches in
+  { min = group 1 |> Int.of_string
+  ; max = group 2 |> Int.of_string
+  ; ch = group 3 |> Char.of_string
+  ; pw = group 4
   }
 
 let read_input =
