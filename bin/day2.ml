@@ -1,6 +1,5 @@
 open Base
 open Stdio
-open Base.Poly
 
 type record =
   { min : int
