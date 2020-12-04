@@ -22,9 +22,8 @@ let day3_1 input slope =
   List.fold positions ~init:0 ~f
 
 let day3_2 input =
-  let slopes = [ (1, 1); (3, 1); (5, 1); (7, 1); (1, 2) ] in
   let f result slope = result * day3_1 input slope in
-  List.fold slopes ~init:1 ~f
+  List.fold ~init:1 ~f [ (1, 1); (3, 1); (5, 1); (7, 1); (1, 2) ]
 
 let read_input =
   In_channel.input_lines In_channel.stdin
