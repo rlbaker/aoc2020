@@ -8,3 +8,6 @@ build:
 day%: build
 	@./_build/default/$@.exe < ./input/$@.txt
 
+.PHONY: watch
+watch:
+	@dune build --watch
