@@ -13,8 +13,8 @@ let gen_positions (dx, dy) xwrap ymax =
 
 let day3_1 input slope =
   let ymax = Array.length input - 1 in
-  let xmax = Array.length input.(0) in
-  let positions = gen_positions slope xmax ymax in
+  let xwrap = Array.length input.(0) in
+  let positions = gen_positions slope xwrap ymax in
   let f count (x, y) =
     match input.(y).(x) with
     | '#' -> count + 1
