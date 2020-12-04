@@ -2,9 +2,9 @@
 build:
 	@dune build
 	@echo
+	@echo "----"
 
 .PHONY: day%
 day%: build
-	@echo "----"
 	@./_build/default/$@.exe < ./input/$@.txt
 
