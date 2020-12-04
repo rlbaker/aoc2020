@@ -9,12 +9,12 @@ clean:
 
 .PHONY: day1
 day1: build
-	@ ./_build/default/bin/day1.exe < input/day1.txt
+	@ ./_build/default/day1.exe < input/day1.txt
 
 .PHONY: day2
 day2: build
-	@ ./_build/default/bin/day2.exe < input/day2.txt
+	@ ./_build/default/day2.exe < input/day2.txt
 
 .PHONY: day3
 day3: build
-	@ ./_build/default/bin/day3.exe < input/day3.txt
+	@ ./_build/default/day3.exe < input/day3.txt
