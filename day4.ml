@@ -26,14 +26,14 @@ let field_validations =
   ]
 
 let valid1 passport =
-  let check passport substring = String.is_substring ~substring passport in
-  let f is_valid (field, _) = is_valid && check passport field in
+  let check substring = String.is_substring ~substring passport in
+  let f is_valid (field, _) = is_valid && check field in
   List.fold field_validations ~init:true ~f
 
 let valid2 passport =
   let split_fields = String.split_on_chars ~on:[ ' '; '\n' ] in
   let split_field = String.lsplit2_exn ~on:':' in
-  let fields = List.map (split_fields passport) ~f:split_field in
+  let fields = List.map ~f:split_field (split_fields passport) in
   let tbl = Hashtbl.of_alist_exn (module String) fields in
   let if_not_found _ = false in
   let f (k, if_found) = Hashtbl.find_and_call tbl k ~if_found ~if_not_found in
