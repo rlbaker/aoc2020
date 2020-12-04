@@ -4,12 +4,11 @@ open Stdio
 let gen_positions (dx, dy) xwrap ymax =
   let wrap x = x % xwrap in
   let next (x, y) = (wrap (x + dx), y + dy) in
-  let rec f pos lst =
-    match pos with
-    | _, y when y >= ymax -> pos :: lst
-    | _ -> f (next pos) (pos :: lst)
+  let rec f lst = function
+    | (_, y) as pos when y >= ymax -> pos :: lst
+    | pos -> f (pos :: lst) (next pos)
   in
-  f (0, 0) []
+  f [] (0, 0)
 
 let day3_1 input slope =
   let ymax = Array.length input - 1 in
