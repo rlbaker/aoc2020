@@ -13,11 +13,11 @@ let seat_id line = String.to_list_rev line |> List.map ~f:bit |> to_dec
 let day5_2 seats =
   let seat_range = List.range (Set.min_elt_exn seats) (Set.max_elt_exn seats) in
   let valid_seats = Set.Poly.of_list seat_range in
-  Set.diff valid_seats seats
+  Set.diff valid_seats seats |> Set.max_elt_exn
 
 let () =
   let input = In_channel.input_lines In_channel.stdin
   and output = printf "%d\n" in
   let seats = List.map input ~f:seat_id |> Set.Poly.of_list in
   Set.max_elt_exn seats |> output;
-  day5_2 seats |> Set.iter ~f:output
+  day5_2 seats |> output
