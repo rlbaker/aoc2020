@@ -1,13 +1,3 @@
-.PHONY: build
-build:
-	@dune build
-	@echo
-	@echo "----"
-
 .PHONY: day%
-day%: build
-	@./_build/default/$@.exe < ./input/$@.txt
-
-.PHONY: watch
-watch:
-	@dune build --watch
+day%:
+	@dune exec -- $@ < ./input/$@.txt
