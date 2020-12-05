@@ -16,8 +16,6 @@ let min seats = unwrap (List.min_elt seats ~compare:Int.compare)
 
 let seat_id line = Int.of_string ("0b" ^ String.map line ~f:to_bin)
 
-let day5_1 = max
-
 let day5_2 seats =
   let range = List.range (min seats) (max seats) in
   let valid_seats = Set.Poly.of_list range
@@ -28,5 +26,5 @@ let () =
   let input = In_channel.input_lines In_channel.stdin
   and output = printf "%d\n" in
   let seats = List.map input ~f:seat_id in
-  day5_1 seats |> output;
+  max seats |> output;
   day5_2 seats |> Set.iter ~f:output
