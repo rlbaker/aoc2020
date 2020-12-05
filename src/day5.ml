@@ -6,22 +6,21 @@ let to_bin = function
   | 'B' | 'R' -> '1'
   | _ -> assert false
 
-let max seats =
-  match List.max_elt seats ~compare:Int.compare with
-  | Some max -> max
+let unwrap = function
+  | Some v -> v
   | _ -> assert false
 
-let min seats =
-  match List.min_elt seats ~compare:Int.compare with
-  | Some max -> max
-  | _ -> assert false
+let max seats = unwrap (List.max_elt seats ~compare:Int.compare)
+
+let min seats = unwrap (List.min_elt seats ~compare:Int.compare)
 
 let seat_id line = Int.of_string ("0b" ^ String.map line ~f:to_bin)
 
 let day5_1 = max
 
 let day5_2 seats =
-  let valid_seats = Set.Poly.of_list (List.range (min seats) (max seats))
+  let range = List.range (min seats) (max seats) in
+  let valid_seats = Set.Poly.of_list range
   and filled_seats = Set.Poly.of_list seats in
   Set.diff valid_seats filled_seats
 
