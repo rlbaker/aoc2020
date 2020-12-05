@@ -1,12 +1,11 @@
 version=0.15.0
-break-cases=all
+break-cases=toplevel
 break-separators=before
 break-sequences=true
 cases-exp-indent=2
 doc-comments=before
 dock-collection-brackets=false
 field-space=loose
-if-then-else=k-r
 indicate-nested-or-patterns=unsafe-no
 let-and=sparse
 parse-docstrings=true
