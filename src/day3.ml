@@ -26,9 +26,7 @@ let day3_2 input =
   List.fold ~init:1 ~f [ (1, 1); (3, 1); (5, 1); (7, 1); (1, 2) ]
 
 let read_input =
-  In_channel.input_lines In_channel.stdin
-  |> List.map ~f:String.to_array
-  |> List.to_array
+  In_channel.input_lines In_channel.stdin |> List.map ~f:String.to_array |> List.to_array
 
 let () =
   let input = read_input in

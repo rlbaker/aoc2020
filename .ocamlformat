@@ -15,3 +15,5 @@ space-around-lists
 space-around-records
 type-decl=sparse
 wrap-comments=true
+let-open=auto
+m=100
