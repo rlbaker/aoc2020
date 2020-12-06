@@ -2,7 +2,7 @@ open Base
 open Stdio
 
 let len f = function
-  | init :: tail -> List.fold tail ~init ~f |> Set.length
+  | hd :: tl -> List.fold tl ~init:hd ~f |> Set.length
   | _ -> 0
 
 let sum f = List.sum (module Int) ~f
